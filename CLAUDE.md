@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## プロジェクト概要
 
 `realestate-app` はSupabase認証機能付きの不動産管理Webアプリです。
-メールアドレス＋パスワードでの会員登録・ログインを行い、ログイン後に物件一覧(ダミーデータ)を表示します。
+メールアドレス＋パスワードでの会員登録・ログインを行い、ログイン後に自分が登録した物件の一覧表示・新規登録・編集・削除ができます。
 
 ## Git運用ルール
 
@@ -27,13 +27,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`
 - キーの値の例は`.env.example`を参照(実際の値は記載しない)
 
+## データベース
+
+- `supabase/schema.sql`: `properties`テーブル(物件名/家賃/エリア/間取り/user_id)の作成とRLSポリシーのSQL
+- SupabaseのSQL Editorで`supabase/schema.sql`を実行してテーブルを作成する
+- RLSにより、各ユーザーは自分(`auth.uid() = user_id`)が登録した物件のみ参照・更新・削除できる
+
 ## ディレクトリ構成
 
 - `src/supabaseClient.js`: Supabaseクライアントの初期化
 - `src/context/`: 認証状態を管理するコンテキスト(`AuthContext.jsx`, `auth-context.js`, `useAuth.js`)
-- `src/components/`: `ProtectedRoute`(未ログイン時は`/login`へリダイレクト)、`PropertyCard`など
-- `src/pages/`: `Login.jsx`, `Signup.jsx`, `PropertyList.jsx`
-- `src/data/properties.js`: 物件一覧のダミーデータ
+- `src/components/`: `ProtectedRoute`(未ログイン時は`/login`へリダイレクト)、`PropertyCard`、`PropertyForm`(新規登録・編集共用)
+- `src/pages/`: `Login.jsx`, `Signup.jsx`, `PropertyList.jsx`(`properties`テーブルへのCRUD)
 
 ## コーディング規約
 
