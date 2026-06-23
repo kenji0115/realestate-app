@@ -1,0 +1,109 @@
+/* ローディング表示 */
+.loading {
+  text-align: center;
+  margin-top: 80px;
+}
+
+/* ログイン・会員登録画面 */
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 360px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form h1 {
+  text-align: center;
+}
+
+.auth-form label {
+  margin-top: 12px;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.auth-form input {
+  font-size: 15px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.auth-form button {
+  margin-top: 20px;
+}
+
+.auth-switch {
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.error-message {
+  color: var(--error);
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.success-message {
+  color: var(--success);
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+/* 物件一覧画面 */
+.property-list-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.property-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.user-email {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.property-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.property-name {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.property-rent,
+.property-area {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
