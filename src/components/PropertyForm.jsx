@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 
 // 物件の新規登録・編集に使用する入力フォーム
 export function PropertyForm({ initialValues, onSubmit, onCancel, submitLabel }) {
@@ -7,6 +7,8 @@ export function PropertyForm({ initialValues, onSubmit, onCancel, submitLabel })
   const [area, setArea] = useState(initialValues?.area ?? '')
   const [layout, setLayout] = useState(initialValues?.layout ?? '')
   const [submitting, setSubmitting] = useState(false)
+  // 新規登録フォームと編集フォームが同時に表示された際にid重複を避ける
+  const formId = useId()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -18,9 +20,9 @@ export function PropertyForm({ initialValues, onSubmit, onCancel, submitLabel })
   return (
     <form className="property-form" onSubmit={handleSubmit}>
       <div className="form-row">
-        <label htmlFor="name">物件名</label>
+        <label htmlFor={`${formId}-name`}>物件名</label>
         <input
-          id="name"
+          id={`${formId}-name`}
           type="text"
           value={name}
           onChange={(event) => setName(event.target.value)}
@@ -29,9 +31,9 @@ export function PropertyForm({ initialValues, onSubmit, onCancel, submitLabel })
       </div>
 
       <div className="form-row">
-        <label htmlFor="rent">家賃(円)</label>
+        <label htmlFor={`${formId}-rent`}>家賃(円)</label>
         <input
-          id="rent"
+          id={`${formId}-rent`}
           type="number"
           min="0"
           value={rent}
@@ -41,9 +43,9 @@ export function PropertyForm({ initialValues, onSubmit, onCancel, submitLabel })
       </div>
 
       <div className="form-row">
-        <label htmlFor="area">エリア</label>
+        <label htmlFor={`${formId}-area`}>エリア</label>
         <input
-          id="area"
+          id={`${formId}-area`}
           type="text"
           value={area}
           onChange={(event) => setArea(event.target.value)}
@@ -52,9 +54,9 @@ export function PropertyForm({ initialValues, onSubmit, onCancel, submitLabel })
       </div>
 
       <div className="form-row">
-        <label htmlFor="layout">間取り</label>
+        <label htmlFor={`${formId}-layout`}>間取り</label>
         <input
-          id="layout"
+          id={`${formId}-layout`}
           type="text"
           placeholder="例: 1LDK"
           value={layout}
