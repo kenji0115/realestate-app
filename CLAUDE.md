@@ -40,6 +40,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `src/components/`: `ProtectedRoute`(未ログイン時は`/login`へリダイレクト)、`PropertyCard`、`PropertyForm`(新規登録・編集共用)
 - `src/pages/`: `Login.jsx`, `Signup.jsx`, `PropertyList.jsx`(`properties`テーブルへのCRUD)
 
+## デプロイ情報
+
+- 本番URL: https://realestate-app-ten-cyan.vercel.app
+- Supabaseプロジェクト名: realestate-app
+- ホスティング: Vercel(`vercel.json`でSPAリライトを設定済み)
+
 ## コーディング規約
 
 - コメントは日本語で記載する
